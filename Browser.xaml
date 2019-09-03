@@ -1,0 +1,304 @@
+﻿<Window x:Class="Folder_Browser.Browser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:local="clr-namespace:Folder_Browser"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+         WindowStartupLocation="CenterScreen"
+        Title="Folder Browser" Height="768" Width="1024" WindowStyle="ToolWindow" ResizeMode="NoResize">
+    <Window.Resources>
+        <local:StringHighlightConverter x:Key="CONVERTERS_StringHighlighter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TextBlock Foreground="Gray" x:Name="dirAddress_txtblock" Text="address" Margin="15,0"/>
+            <ListView Margin="0,2,0,0" x:Name="filesfolders_listview" MouseDoubleClick="OnDirectoryChange" ItemsSource="{Binding Items}">
+                <ListView.View>
+
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="820">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <materialDesign:Card Background="{DynamicResource MaterialDesignBackground}">
+                                            <StackPanel>
+                                                <Expander HorizontalAlignment="Stretch" IsExpanded="{Binding Mode=TwoWay, Path=IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem, Mode=FindAncestor}}">
+                                                    <Expander.Header>
+                                                        <StackPanel>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <materialDesign:PackIcon Kind="{Binding Icon}" />
+                                                                <TextBlock Margin="10,0" Text="{Binding Name}"/>
+                                                            </StackPanel>
+
+                                                            <StackPanel Orientation="Horizontal" Margin="25,5,0,0">
+                                                                <ContentControl Margin="7,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray"
+                                                                    Content="{Binding Sentence, Converter={StaticResource CONVERTERS_StringHighlighter}, Mode=OneTime}">
+                                                                </ContentControl>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </Expander.Header>
+
+
+                                                    <StackPanel Margin="0" Width="820" Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+
+                                                        
+                                                        
+                                                        
+                                                        <ListView ItemsSource="{Binding Path=SubItems}" MaxHeight="300" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                                            <ListView.View>
+                                                                <GridView>
+                                                                    <GridViewColumn Width="820">
+                                                                        <GridViewColumn.CellTemplate>
+                                                                            <DataTemplate>
+                                                                                <Grid>
+                                                                                    <StackPanel Orientation="Horizontal" Margin="25,5,0,0">
+                                                                                        <materialDesign:PackIcon Kind="{Binding StopCircleOutline}"/>
+                                                                                        <ContentControl Margin="7,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray"
+                                                                                Content="{Binding Sentence, Converter={StaticResource CONVERTERS_StringHighlighter}, Mode=OneTime}">
+                                                                                        </ContentControl>
+                                                                                    </StackPanel>
+
+                                                                                </Grid>
+                                                                            </DataTemplate>
+                                                                        </GridViewColumn.CellTemplate>
+                                                                    </GridViewColumn>
+                                                                </GridView>
+                                                            </ListView.View>
+                                                            <!--<ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>-->
+                                                        </ListView>
+
+                                                    </StackPanel>
+                                                </Expander>
+                                            </StackPanel>
+                                        </materialDesign:Card>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+
+
+
+
+
+
+        </Grid>
+
+        <Grid  Grid.Column="1" >
+            <Border BorderThickness="0.5" BorderBrush="Gray">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1.1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel  Orientation="Horizontal" Margin="5, 10,0,0" >
+                                <Button Height="20"
+                                
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Click="OnNavigateToPreviousDirectory"
+                                ToolTip="Go Back">
+                                    <materialDesign:PackIcon Margin="-11"  Foreground="Black" Kind="ArrowBack" VerticalAlignment="Center"  />
+                                </Button>
+                            </StackPanel>
+
+                            <StackPanel Margin="10, 10,0,0" Orientation="Horizontal" >
+                                <materialDesign:PackIcon Opacity=".56" Kind="FolderOutline" VerticalAlignment="Bottom" />
+                                <ComboBox 
+                        x:Name="drive_cmbx"
+                        Margin="22,0"
+                        Width="100"
+                        materialDesign:HintAssist.Hint="O"
+                        SelectedIndex="1"
+                        IsSynchronizedWithCurrentItem ="True"
+                        DisplayMemberPath="Name"
+                        SelectedValuePath="Name"
+                        HorizontalContentAlignment="Left"
+                        SelectedValue="{Binding Path=Name}" SelectionChanged="OnDriveChange"/>
+                            </StackPanel>
+
+
+
+                            <StackPanel Margin="10, 10,0,0" Orientation="Horizontal" >
+                                <materialDesign:PackIcon Opacity=".56" Kind="EyeSettingsOutline" VerticalAlignment="Bottom" />
+
+                                <ComboBox
+                                     materialDesign:HintAssist.Hint="File/Folder"
+                                     x:Name="searchtype_cmbx"
+                                     Margin="22,0"
+                                     Width="100" >
+                                    <ComboBoxItem>File/Folder</ComboBoxItem>
+                                    <ComboBoxItem>Content</ComboBoxItem>
+                                </ComboBox>
+
+
+
+                            </StackPanel>
+
+
+
+
+                            <StackPanel Margin="10, 10,0,0" Orientation="Horizontal">
+                                <materialDesign:PackIcon Opacity=".56" Kind="FolderSearchOutline" VerticalAlignment="Bottom"  />
+
+                                <StackPanel>
+
+                                    <TextBox
+                                  Margin="22,0"
+                                  Width="100"
+                                  x:Name="CommentTextBox"
+                                  materialDesign:HintAssist.Hint="Search"
+                                  KeyUp="OnSearchFileFolder"
+                                />
+                                </StackPanel>
+
+                            </StackPanel>
+
+
+                            <StackPanel Margin="10, 10,0,0" Orientation="Horizontal">
+                                <materialDesign:PackIcon Opacity=".56" Kind="FilterOutline" VerticalAlignment="Bottom"  />
+                                <TextBox
+                              Margin="22,0"
+                              Width="100"
+                              x:Name="filterbx"
+                              materialDesign:HintAssist.Hint="Filter" />
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid VerticalAlignment="Top">
+                            <StackPanel>
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+
+                                </StackPanel>
+
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+
+                                </StackPanel>
+
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid VerticalAlignment="Bottom">
+                            <StackPanel>
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+                                    <Button HorizontalContentAlignment="Center" Opacity=".60"  
+                                        Foreground="Black" Style="{StaticResource MaterialDesignFlatButton}"
+                                        Click="OnOpenCreateNewProjectWindow"
+                                        ToolTip="Create New Project">
+                                        <Grid Width="180" Margin="-15,0,0,0">
+                                            <materialDesign:PackIcon Margin="10,0"  Opacity=".56" Kind="CubeOutline" HorizontalContentAlignment="Left" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Width="100" Foreground="Black" Text="New Project"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+                                    <Button HorizontalContentAlignment="Center" Opacity=".60"  
+                                        Foreground="Black" Style="{StaticResource MaterialDesignFlatButton}"
+                                        Click="OnOpenFolderPermissionWindow"
+                                        ToolTip="Import File">
+                                        <Grid Width="180" Margin="-15,0,0,0">
+                                            <materialDesign:PackIcon Margin="10,0"  Opacity=".56" Kind="ShieldLockOutline" HorizontalContentAlignment="Left" VerticalAlignment="Center" />
+                                            <TextBlock Width="100" HorizontalAlignment="Center" Foreground="Black" Text="Permissions"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+                                    <Button HorizontalContentAlignment="Center" Opacity=".60"  
+                                        Foreground="Black" Style="{StaticResource MaterialDesignFlatButton}"
+                                        Click="OnOpenRenameWindow"
+                                        ToolTip="Rename File or Folder">
+                                        <Grid Width="180" Margin="-15,0,0,0">
+                                            <materialDesign:PackIcon Margin="10,0"  Opacity=".56" Kind="FolderEditOutline" HorizontalContentAlignment="Left" VerticalAlignment="Center" />
+                                            <TextBlock Width="100" HorizontalAlignment="Center" Foreground="Black" Text="Rename"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+
+
+
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+                                    <Button HorizontalContentAlignment="Center" Opacity=".60"  
+                                        Foreground="Black" Style="{StaticResource MaterialDesignFlatButton}"
+                                        Click="OnOpenImportFileWindow"
+                                        ToolTip="Import File">
+                                        <Grid Width="180" Margin="-15,0,0,0">
+                                            <materialDesign:PackIcon Margin="10,0"  Opacity=".56" Kind="FileOutline" HorizontalContentAlignment="Left" VerticalAlignment="Center" />
+                                            <TextBlock Width="100" HorizontalAlignment="Center" Foreground="Black" Text="Import File"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0, 0,0,0" Orientation="Horizontal">
+                                    <Button HorizontalContentAlignment="Center" Opacity=".60"  
+                                        Foreground="Black" Style="{StaticResource MaterialDesignFlatButton}"
+                                        Click="OnOpenCreateNewFolderWindow"
+                                        ToolTip="Create New Folder">
+                                        <Grid Width="180" Margin="-15,0,0,0">
+                                            <materialDesign:PackIcon Margin="10,0"  Opacity=".56" Kind="FolderOpenOutline" HorizontalContentAlignment="Left" VerticalAlignment="Center" />
+                                            <TextBlock Width="100" HorizontalAlignment="Center" Foreground="Black" Text="New Folder"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+
+
+
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

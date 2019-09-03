@@ -1,0 +1,93 @@
+﻿<Window x:Class="Folder_Browser.FileImportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Folder_Browser"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         WindowStartupLocation="CenterScreen"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        Title=""  Height="250" Width="280" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" >
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+              
+
+                <StackPanel Margin="10, 10,0,0" Orientation="Horizontal" >
+                    <materialDesign:PackIcon Opacity=".56" Kind="FileOutline" VerticalAlignment="Bottom" />
+                    <TextBlock    
+                                  FontSize="10"
+                                  Margin="22,0"
+                                  x:Name="filename_textblock"/>
+                </StackPanel>
+
+
+                <StackPanel Margin="10, 10,0,0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Opacity=".56" Kind="FolderOutline" VerticalAlignment="Bottom"  />
+
+                    <StackPanel>
+
+                        <TextBlock
+                                  FontSize="10"
+                                  Margin="22,0"
+                                  x:Name="directorypath_textblock"
+                                />
+                    </StackPanel>
+
+                </StackPanel>
+
+
+                <StackPanel Margin="10, 10,0,0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Opacity=".56" Kind="TagOutline" VerticalAlignment="Bottom"  />
+                    <TextBox
+                              FontSize="10"
+                              Margin="22,0"
+                              Width="200"
+                              x:Name="tag_textbox"
+                              materialDesign:HintAssist.Hint="Add Tags (tag1, tag2)" />
+                </StackPanel>
+
+                <StackPanel Margin="10, 10,0,0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Opacity=".56" Kind="CommentOutline" VerticalAlignment="Bottom"  />
+                    <TextBox
+                              FontSize="10"
+                              Margin="22,0"
+                              Width="200"
+                              x:Name="content_textbox"
+                              materialDesign:HintAssist.Hint="Add Comment" />
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+
+                <Button HorizontalContentAlignment="Center" Opacity=".60"  
+                                        Foreground="Black" Style="{StaticResource MaterialDesignFlatButton}"
+                                        Click="OnUploadfile"
+                                        ToolTip="Create New Project">
+                    <Grid >
+                    <materialDesign:PackIcon Margin="-25,0"  Opacity=".56" Kind="Upload" HorizontalContentAlignment="Left" VerticalAlignment="Center" />
+                        <TextBlock HorizontalAlignment="Center"  Foreground="Black" Text="Upload"/>
+                    </Grid>
+                </Button>
+
+        </Grid>
+
+    </Grid>
+</Window>
