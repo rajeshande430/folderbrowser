@@ -1,1 +1,2 @@
-xcopy /s "C:\Program Files (x86)\Jenkins\workspace\net\bin\Debug\Folder_Browser.exe" "C:\Users\user\Desktop\installer"
+xcopy /s "C:\Program Files (x86)\Jenkins\workspace\net\bin\Debug" "C:\Users\user\Desktop\installer"
+
