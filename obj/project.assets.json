@@ -2,20 +2,6 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.5.2": {
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        }
-      },
       "MaterialDesignColors/1.2.0": {
         "type": "package",
         "compile": {
@@ -66,20 +52,6 @@
       }
     },
     ".NETFramework,Version=v4.5.2/win": {
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        }
-      },
       "MaterialDesignColors/1.2.0": {
         "type": "package",
         "compile": {
@@ -124,20 +96,6 @@
       }
     },
     ".NETFramework,Version=v4.5.2/win-x64": {
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        }
-      },
       "MaterialDesignColors/1.2.0": {
         "type": "package",
         "compile": {
@@ -182,20 +140,6 @@
       }
     },
     ".NETFramework,Version=v4.5.2/win-x86": {
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        }
-      },
       "MaterialDesignColors/1.2.0": {
         "type": "package",
         "compile": {
@@ -241,36 +185,6 @@
     }
   },
   "libraries": {
-    "EntityFramework/6.1.3": {
-      "sha512": "2xzFHAF3VVdmTR3//MygtQpwfbDjeaq+nQwCcokLzen7MKHOojPaxNPQPa4diHY1QtcR7zlHAJHNRqPB7W2Syw==",
-      "type": "package",
-      "path": "entityframework/6.1.3",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "content/App.config.transform",
-        "content/Web.config.transform",
-        "entityframework.6.1.3.nupkg.sha512",
-        "entityframework.nuspec",
-        "lib/net40/EntityFramework.SqlServer.dll",
-        "lib/net40/EntityFramework.SqlServer.xml",
-        "lib/net40/EntityFramework.dll",
-        "lib/net40/EntityFramework.xml",
-        "lib/net45/EntityFramework.SqlServer.dll",
-        "lib/net45/EntityFramework.SqlServer.xml",
-        "lib/net45/EntityFramework.dll",
-        "lib/net45/EntityFramework.xml",
-        "tools/EntityFramework.PowerShell.Utility.dll",
-        "tools/EntityFramework.PowerShell.dll",
-        "tools/EntityFramework.psd1",
-        "tools/EntityFramework.psm1",
-        "tools/about_EntityFramework.help.txt",
-        "tools/init.ps1",
-        "tools/install.ps1",
-        "tools/migrate.exe"
-      ]
-    },
     "MaterialDesignColors/1.2.0": {
       "sha512": "tWopwGZk6ScDgjEyDrJuKPtuIF3KUfXP5TRqd7M5QTL8Nq46AB/NHF9VZ5fMUBOlEGWroaJb6lwLG6rjm9+hFw==",
       "type": "package",
@@ -504,27 +418,26 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.5.2": [
-      "EntityFramework >= 6.1.3",
       "MaterialDesignThemes >= 2.6.0",
       "Newtonsoft.Json >= 12.0.2",
       "System.DirectoryServices.AccountManagement >= 4.5.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ali asad\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ERPM Archcorp\\ERPM\\DesktopApps\\Folder_Browser\\Folder_Browser\\Folder_Browser.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\New folder\\folderbrowser\\Folder_Browser.csproj",
       "projectName": "Folder_Browser",
-      "projectPath": "E:\\ERPM Archcorp\\ERPM\\DesktopApps\\Folder_Browser\\Folder_Browser\\Folder_Browser.csproj",
-      "packagesPath": "C:\\Users\\Ali asad\\.nuget\\packages\\",
-      "outputPath": "E:\\ERPM Archcorp\\ERPM\\DesktopApps\\Folder_Browser\\Folder_Browser\\obj\\",
+      "projectPath": "C:\\Users\\user\\Desktop\\New folder\\folderbrowser\\Folder_Browser.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\New folder\\folderbrowser\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Ali asad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -543,10 +456,6 @@
     "frameworks": {
       "net452": {
         "dependencies": {
-          "EntityFramework": {
-            "target": "Package",
-            "version": "[6.1.3, )"
-          },
           "MaterialDesignThemes": {
             "target": "Package",
             "version": "[2.6.0, )"
